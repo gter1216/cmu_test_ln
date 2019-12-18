@@ -222,7 +222,7 @@ void task_two()
 	     printf("Error: inputNum is out of Range\n");
 	}
 
-       if(inputNum >0)
+       if(inputNum >= 0)
        {
             
 	     getMaxPos(inputNum, &pos, &outputNum);
@@ -241,12 +241,12 @@ void task_two()
 
 void task_three()
 {
-	/*Task Three: EraseOneLetter*/
+      /*Task Three: EraseOneLetter*/
       char inputWord[64+1] = {0};
 
-	int ret = FAILURE;
+      int ret = FAILURE;
 
-	printf("Task Three: EraseOneLetter \n");
+       printf("Task Three: EraseOneLetter \n");
 
        printf("please input word, max len is 64\n");
        scanf("%s", inputWord);
@@ -261,32 +261,22 @@ void task_three()
 	     return;
        }
 
-	 int i = 0, k = 0;
-	 int len = strlen(inputWord);
+       int len = strlen(inputWord);
 
-	 for(i=0; i<len; i++)
-	 {
-	      if(inputWord[i] > inputWord[i+1])
-	      	{
-	      	     //delete character in position k 
-	      	     k = i+1;
-		     if(k==len-1)
-		     {
-		          inputWord[k] = '\0';
-		     }
-		     for(k; k<len; k++)
-		     {
-		         if(k==len-1)
-		         {
-		              inputWord[k] = '\0';
-		         }
-		         inputWord[k] = inputWord[k+1];
-		     }
-		     break;
-	      	}
-	 }
-
-      printf("output word is %s \n", inputWord);
+       int i = 0;
+  
+       while(inputWord[i]>=inputWord[i+1])
+            i++;
+    
+       while(i < len-1)
+       {
+          inputWord[i] = inputWord[i+1];
+          i++;
+       }
+ 
+        inputWord[len-1] = '\0';
+   
+        printf("output word is %s \n", inputWord);
    
 	return;
 	   
@@ -327,8 +317,3 @@ void main()
       	}
 	
 }
-
-
-
-
-
